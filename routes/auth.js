@@ -1,0 +1,83 @@
+const router = require("express").Router();
+const User = require('../models/User.model');
+const bcrypt = require('bcrypt');
+
+
+
+/* Sign Up */
+
+router.get('/signup', (req, res, next) => {
+    res.render('signup');
+  });
+  
+router.post('/signup', (req, res, next) => {
+//console.log(req.body);
+const { username, password } = req.body;
+if (username.length === 0) {
+    res.render('signup', { message: 'Username cannot be empty' });
+    return;
+}
+if (password.length < 6) {
+    res.render('signup', { message: 'Password should be at least 6 characters' });
+    return;
+}
+User.findOne({ username: username })
+.then(userFromDB => {
+    if (userFromDB !== null) {
+    res.render('signup', { message: 'Username is already taken' });
+    } else {
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync(password, salt);
+    //console.log(hash);
+    User.create({ username: username, password: hash })
+    .then(createdUser => {
+        //console.log(createdUser);
+        res.redirect('/login');
+    })
+    .catch(err => {
+        next(err);
+    })
+    }
+})
+});
+  
+
+
+/* Log In */
+
+router.get('/login', (req, res, next) => {
+    res.render('login');
+  });
+  
+router.post('/login', (req, res, next) => {
+    const { username, password } = req.body;
+    User.findOne({ username: username })
+        .then(userFromDB => {
+            if (userFromDB === null) {
+                res.render('login', { message: 'incorrect credentials' })
+            }
+            if (bcrypt.compareSync(password, userFromDB.password)) {
+                req.session.user = userFromDB;
+                //console.log('login successful');
+                console.log(userFromDB);
+                res.redirect('/profile');
+            } else {
+                res.render('login', { message: 'incorrect credentials' })
+            }
+        })
+});
+
+
+
+
+
+module.exports = router;
+
+
+
+
+
+
+
+
+

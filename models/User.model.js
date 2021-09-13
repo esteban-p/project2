@@ -1,12 +1,52 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
+
 const userSchema = new Schema({
   username: {
     type: String,
-    // unique: true -> Ideally, should be unique, but its up to you
+    required: true,
+    unique: true
   },
   password: String,
+  photoUrl: String,
+  favMovieQuote: String,
+  genre1: [
+    {
+      movieId: String,
+      myRating: Number
+    }
+  ],
+  genre2: [
+    {
+      movieId: String,
+      myRating: Number
+    }
+  ],
+  genre3: [
+    {
+      movieId: String,
+      myRating: Number
+    }
+  ],
+  genre4: [
+    {
+      movieId: String,
+      myRating: Number
+    }
+  ],
+  genre5: [
+    {
+      movieId: String,
+      myRating: Number
+    }
+  ],
+  genre6: [
+    {
+      movieId: String,
+      myRating: Number
+    }
+  ]
+
 });
 
 const User = model("User", userSchema);
