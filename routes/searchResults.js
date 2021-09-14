@@ -19,6 +19,8 @@ const TMDBApi_key = process.env.API_Key;
          {
            movie_Id:array[movie].id,
            title:array[movie].title,
+           score:array[movie].vote_average,
+           genre:array[movie].genre_ids,
            posterUrl:posterLink + `${array[movie].poster_path}`
           })
   

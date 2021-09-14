@@ -1,11 +1,21 @@
 
 <h2>This is the Results Page for 😜</h2>
+
+<form action="/movie-search" method="GET">
+<input type="text" name='movie' id='movie' placeholder="Movie Name">
+<button type="submit" id="searchBtn">Search</button>
+</form>
+
 {{#each results}}
-
+<div>
 {{> movieCard this}}
-
+</div>
 {{!-- <p>Title : {{title}}</p>
 <img src="{{posterUrl}}" alt="">
 <p>Movie_Id: {{movie_Id}}</p> --}}
-
+{{!-- <form action="" method=""> --}}
+<input type="number" name='rate' id='rate' min="0" max="10">
+<button type="submit" id="RateBtn">Rate</button>
+{{!-- </form> --}}
+<button type="submit" id="addBtn">Add Movie to watch list</button>
 {{/each}}
