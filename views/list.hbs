@@ -1,0 +1,29 @@
+<h1>List name: {{list.title}} </h1>
+
+
+
+<form action="/lists/{{ list._id }}" method="POST">
+    <label for="">Movie id-test: </label>
+	<input type="text" name="movieIdFromApi">
+
+    <br>
+    <label for="">Rate the movie (1 to 10): </label>
+	<input type="number" name="rating">
+
+    <br>
+	<button type="submit">Add movie to my list</button>
+</form>
+
+
+
+
+{{#each list.movies}}
+    <p>{{movie_Id}}</p>
+    <p>{{rating}}</p>
+{{/each}}
+
+
+<br><br><br><br><br>
+<form action="/lists/{{ list._id }}/delete" method="POST">
+    <button type="submit">Delete this List</button>
+</form>

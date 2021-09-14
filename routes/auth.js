@@ -58,8 +58,6 @@ router.post('/login', (req, res, next) => {
             }
             if (bcrypt.compareSync(password, userFromDB.password)) {
                 req.session.user = userFromDB;
-                //console.log('login successful');
-                console.log(userFromDB);
                 res.redirect('/profile');
             } else {
                 res.render('login', { message: 'incorrect credentials' })
@@ -68,6 +66,18 @@ router.post('/login', (req, res, next) => {
 });
 
 
+
+/* Log Out */
+
+router.get('/logout', (req, res, next) => {	
+	req.session.destroy(err => {
+		if (err) {
+			next(err);
+		} else {
+			res.redirect('/');
+		}
+	})
+});
 
 
 

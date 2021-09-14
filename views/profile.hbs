@@ -1,3 +1,22 @@
-<h1>This is the profile page 🤩</h1>
-<h1>Hello {{user.username}} 👋</h1>
+<h1>Profile page of: {{user.username}}</h1> 
+
+
+
+<form action="/profile" method="POST">
+	<label for="listName">New list name: </label>
+	<input type="text" name="listName">
+
+	<button type="submit">Create a new list</button>
+</form>
+
+<br><br>
+<h3>My Lists</h3>
+{{#each lists}}
+    <a href="/lists/{{ _id }}">{{ title }}</a>
+    <h4>{{movies}}</h4>
+{{/each}}
+
+
+
+<br><br><br>
 <a href="/logout">Log out 🚪</a>

@@ -9,44 +9,7 @@ const userSchema = new Schema({
   },
   password: String,
   photoUrl: String,
-  favMovieQuote: String,
-  genre1: [
-    {
-      movieId: String,
-      myRating: Number
-    }
-  ],
-  genre2: [
-    {
-      movieId: String,
-      myRating: Number
-    }
-  ],
-  genre3: [
-    {
-      movieId: String,
-      myRating: Number
-    }
-  ],
-  genre4: [
-    {
-      movieId: String,
-      myRating: Number
-    }
-  ],
-  genre5: [
-    {
-      movieId: String,
-      myRating: Number
-    }
-  ],
-  genre6: [
-    {
-      movieId: String,
-      myRating: Number
-    }
-  ]
-
+  favMovieQuote: String
 });
 
 const User = model("User", userSchema);
