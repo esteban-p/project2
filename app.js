@@ -31,27 +31,14 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);
+
+const searchResults = require("./routes/searchResults");
+app.use("/", searchResults);
 // const movies = require("./routes/movies");
 // app.use("/", movies);
+// Register the location for handlebars partials here:
+hbs.registerPartials(__dirname + '/views/partials')
 
-app.get('/movie-search', (req, res) => {
-  const movie = req.query.movie;
-  const movieQuery = movie.split(' ').join('+');
-  console.log(movieQuery);
-  
-  axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${TMDBApi_key}&query=${movieQuery}`)
-    
-    .then((response) => {
-      console.log('The response from the API: ',response.body);
-    
-
-     // res.render('artist-search-results', { data });
-    })
-
-    .catch((err) =>
-      console.log('The error while searching artists occurred: ', err)
-    );
-});
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
