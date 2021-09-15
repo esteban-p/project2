@@ -9,8 +9,10 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.5.0",
+    "axios": "^0.21.4",
     "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
+    "expess": "^0.0.1-security",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "hbs": "^4.1.2",
