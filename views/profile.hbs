@@ -12,8 +12,13 @@
 <br><br>
 <h3>My Lists</h3>
 {{#each lists}}
-    <a href="/lists/{{ _id }}">{{ title }}</a>
-    <h4>{{movies}}</h4>
+    <br><br><br>
+	<a href="/lists/{{ _id }}">{{ title }}</a>
+    
+	{{#each movies}}
+	<h4>{{movie_Id}}</h4>
+	{{/each}}
+
 {{/each}}
 
 

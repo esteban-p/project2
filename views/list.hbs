@@ -1,4 +1,6 @@
+<h1>User: {{user.username}}</h1> 
 <h1>List name: {{list.title}} </h1>
+{{!-- <h6>List id: {{list._id}} </h6> --}}
 
 
 
@@ -17,13 +19,26 @@
 
 
 
-{{#each list.movies}}
-    <p>{{movie_Id}}</p>
-    <p>{{rating}}</p>
-{{/each}}
+{{#with list}}
+    {{#each movies}}
+        <br><br><br>
+        <p>{{movie_Id}}</p>
+        <p>My rating: {{rating}}</p>
+
+        <form action="/lists/{{ ../_id }}/movie-delete/{{ movie_Id }}" method="POST">
+        <button type="submit">Delete this movie from my list</button>
+        </form>
+    {{/each}}
+{{/with}}
 
 
 <br><br><br><br><br>
 <form action="/lists/{{ list._id }}/delete" method="POST">
     <button type="submit">Delete this List</button>
 </form>
+
+
+
+<br><br><br>
+<a href="/profile/{{user._id}}">Back to user profile</a>
+

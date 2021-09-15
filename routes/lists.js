@@ -20,18 +20,20 @@ const loginCheck = () => {
 
 /* Show Profile */
 
-router.get('/profile', loginCheck(), (req, res, next) => {
+router.get('/profile/:id', loginCheck(), (req, res, next) => {
   //console.log('user: ', );
   const user = req.session.user;
   List.find( { owner: user._id } )
     .then(lists  => {
-      //console.log('Tryig to console the list: ', lists);
       res.render('profile', { lists , user } );
     })
     .catch(err => {
       next(err);
     });
 });
+
+
+
 
 
 
@@ -42,7 +44,7 @@ router.post('/profile', (req, res, next) => {
   const movies = [];
   List.create({ title: req.body.listName, owner: req.session.user._id, movies: movies})
     .then(() => {
-      res.redirect('/profile');
+      res.redirect(`/profile/${req.session.user._id}`);
     })
     .catch(err => {
       next(err);
@@ -56,10 +58,11 @@ router.post('/profile', (req, res, next) => {
 /* Show specific List of user */
 
 router.get('/lists/:id', (req, res, next) => {
+  const user = req.session.user;
   List.findById(req.params.id)
     .then(list => {
       //console.log(req.params.id);
-      res.render('list', { list } );
+      res.render('list', { list, user } );
     })
     .catch(err => {
       next(err);
@@ -95,24 +98,33 @@ router.post('/lists/:id', (req, res, next) => {
 
 /* Delete the List */
 
-// router.post('lists/:id/delete', (req, res, next) => {
-//   List.findOneAndDelete({ _id: req.params.id })
-//     .then(() => {
-//       res.redirect('/profile');
-//     })
-//     .catch(err => {
-//       next(err);
-//     })
-// });
-
-
-router.post('lists/:id/delete', (req, res, next) => {
+router.post('/lists/:id/delete', (req, res, next) => {
   List.findOneAndDelete({ _id: req.params.id })
+    .then(() => {
+      res.redirect(`/profile/${req.session.user._id}`)
+    })
+    .catch(err => {
+      next(err);
+    })
+});
 
+
+
+/* Delete a movie from the List */
+
+router.post('/lists/:id/movie-delete/:movid', (req, res, next) => {
+  List.findByIdAndUpdate(
+    req.params.id, 
+    {$pull: {movies: {movie_Id: req.params.movid}}},
+    { new: true }
+    )
+    .then(list => {
+      res.redirect(`/lists/${req.params.id}`);
+    })
+    .catch(err => {
+      next(err);
+    });
 })
-
-
-
 
 
 
