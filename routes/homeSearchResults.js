@@ -4,14 +4,14 @@ const TMDBApi_key = process.env.API_Key;
 // router.get("/movie-search", (req, res, next) => {
 //     res.render("searchResults");
 //   });
-  router.get('/profile/:id/movie-search', (req, res) => {
+  router.get('/movie-search', (req, res) => {
     const movie = req.query.movie;
     const movieQuery = movie.split(' ').join('+');
     // console.log(movieQuery);
     const posterLink = `https://www.themoviedb.org/t/p/w1280`;
     // console.log('Link:',link);
     
-  
+
     function searchMovie(array) {
       const result = []
       for (let movie in array) {
@@ -35,10 +35,14 @@ const TMDBApi_key = process.env.API_Key;
        
         console.log('Result:',searchMovie(response.data.results))
         console.log('The response from the API: ',response.data);
+
+        const queryLink = `https://api.themoviedb.org/3/search/movie?api_key=${TMDBApi_key}&query=${movieQuery}`
+        console.log ('Data link:', queryLink);
+    
         
         
         const results = searchMovie(response.data.results)
-       res.render('searchResults', { results: results});
+       res.render('index', { results: results});
       })
   
       .catch((err) =>

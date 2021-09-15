@@ -34,10 +34,19 @@ app.use("/", index);
 
 const searchResults = require("./routes/searchResults");
 app.use("/", searchResults);
+
+const homeSearchResults = require('./routes/homeSearchResults');
+app.use('/', homeSearchResults);
+
+//Use to render list in Profile
+const listRender = require('./routes/listRender');
+app.use('/', listRender);
+
+
 // const movies = require("./routes/movies");
 // app.use("/", movies);
 // Register the location for handlebars partials here:
-hbs.registerPartials(__dirname + '/views/partials')
+hbs.registerPartials(__dirname + '/views/partials');
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
