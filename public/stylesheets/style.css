@@ -1,16 +1,16 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+  
 }
 
-a {
+#addMovie {
   
   display: block;
   width: 85px;
   height: 20px;
   padding: 10px;
-  background: rgb(201, 175, 27);
+  background: rgb(199, 163, 4);
   color: #161515;
 }
 
@@ -18,7 +18,9 @@ a {
  
 } */
 
-
+#landingPage{
+  background-image: url("../images/Movie-App-Imgs/film-banner.png;");
+}
 
 #searchResults{
   
@@ -31,6 +33,8 @@ a {
  height: 100vh;
   
 }
+
+
 
 #result{
 
@@ -53,4 +57,40 @@ a {
 font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 font-weight: bolder;
 width: 300vw;
+}
+
+#signUp {
+  color: #15df58;
+}
+
+#profileLink{
+  display: block;
+  width: 7vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+
+  background: rgb(187, 186, 182);
+color: #131413;
+}
+
+#profileButton {
+display: flex;
+justify-content: end;
+margin-left: 80vw;
+}
+
+#searchBar{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vw;
+
+}
+
+#profilePage{
+  /* background-image: url("../images/Movie-App-Imgs/Cinema1.jpeg"); */
 }

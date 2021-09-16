@@ -1,9 +1,12 @@
+<div id="profilePage">
 <h1>Profile page of: {{user.username}}</h1> 
 <br><br><br>
-<h3>My favourites movies</h3>
+<h2>My favourites movies</h2>
 
 
+<div id="favList">
 
+	<div id="favMovie">
 	{{#each listToPass.movies}}
 
 	<img src="{{posterUrl}}"  width='100px' alt="Poster for {{movie_title}}">
@@ -16,10 +19,10 @@
 	<br><br><br>
 	{{/each}}
 
+</div>
 
 
-
-
+</div>
 
 
 {{!-- <form action="/profile" method="POST">
@@ -49,6 +52,9 @@
 
 
 <br><br><br>
-<a href="/search-movie">Search movies to add to my Favourites</a>
+<h3>Search movies to add to my Favourites</h3>
+<a href="/search-movie">Search</a>
 <br><br><br>
 <a href="/logout">Log out 🚪</a>	
+
+</div>

@@ -1,11 +1,13 @@
 
-<link rel="stylesheet" href="../public/stylesheets/style.css">
+<div id="profileButton">
+    <a href='/profile/{{user._id}}' id="profileLink">Back to Profile</a>
+</div>
 <div id="searchBar">
 <h1> Type name of Movie</h1>
 <form action="/movie-search" method="GET">
 <input type="text" name='movie' id='movie' placeholder="Movie Name">
 <button type="submit" id="searchBtn">Search</button>
-<a href='/profile/{{user._id}}'>Back to user profile</a>
+
 </form>
 </div>
 
@@ -21,3 +23,4 @@
 {{/each}}
 </div> 
 
+{{!-- <a href='/profile/{{user._id}}'>Back to user profile</a> --}}
