@@ -1,0 +1,22 @@
+
+<link rel="stylesheet" href="../public/stylesheets/style.css">
+<div id="searchBar">
+<h1> Type name of Movie</h1>
+<form action="/movie-search" method="GET">
+<input type="text" name='movie' id='movie' placeholder="Movie Name">
+<button type="submit" id="searchBtn">Search</button>
+</form>
+</div>
+
+
+
+<div id="searchResults">
+{{#each results}}
+
+    <div id="result">
+    {{> movieCard this}}
+    </div>
+
+{{/each}}
+</div> 
+

@@ -45,8 +45,7 @@ const TMDBApi_key = process.env.API_Key;
         //console.log ('Data link:', queryLink);
         
         const results = searchMovie(response.data.results)
-       res.render('index', { results: results});
-        //res.json({results});
+       res.render('search', { results: results});
       })
       .catch((err) =>
         console.log('The error while searching artists occurred: ', err)

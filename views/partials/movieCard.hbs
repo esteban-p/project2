@@ -1,12 +1,36 @@
-<a href="/movies/{{title}}">
+
+
+<div id="{{movie_Id}}" >
+
+{{!-- <a href="/movies/{{title}}"> --}}
 	<img src="{{posterUrl}}" width="200px"  alt="poster for {{title}}">
-</a>
+{{!-- </a> --}}
 
 
 
 <h1>
 	Title : {{title}}
 </h1>
+
+<p>
+	Movie score: {{score}}
+</p>
+{{!-- <p>
+    Movie id: {{movie_Id}}
+</p> --}}
+
+
+
+
+{{!-- <form action="" method=""> --}}
+{{!-- <input type="number" name='rate' id='rate' min="0" max="10">
+<button type="submit" id="RateBtn">Rate</button> --}}
+{{!-- </form> --}}
+<a href="/movie/add?title={{title}}&movie_id={{movie_Id}}&movie_score={{score}}&poster={{posterUrl}}">Add movive</a>
+</div>
+
+
+
 {{!-- <p>
 	Year: {{year}}
 </p>

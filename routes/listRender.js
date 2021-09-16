@@ -49,6 +49,12 @@ router.get('/movie-search-id', (req, res) => {
       
       
          const results = searchMovie(response.data)
+         console.log('Title of query:',results[0].title)
+         //const movie = {
+             movie_Id :results[0].title
+         
+
+         
          res.render('index', { results: results});
         })
 
