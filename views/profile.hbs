@@ -4,10 +4,16 @@
 
 
 
-	{{#each lists.movies}}
-	<h4>{{movie_Id}}</h4>
+	{{#each listToPass.movies}}
+
+	<img src="{{posterUrl}}"  width='100px' alt="Poster for {{movie_title}}">
 	<h4>{{movie_title}}</h4>
-	<h4>{{posterUrl}}</h4>
+	<h4>Score: {{ApiRating}}</h4>
+	<a href="/movie/delete?movie_id={{movie_Id}}">Remove from my favourites</a>
+
+
+
+	<br><br><br>
 	{{/each}}
 
 

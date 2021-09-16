@@ -34,7 +34,7 @@ User.findOne({ username: username })
 
     .then(createdUser => {
         const movies = [];
-        console.log(createdUser);
+        // console.log(createdUser);
         List.create({ title: 'Favourites', owner: createdUser._id, movies: movies})  //req.session.user._id
             .then(() => res.redirect('/login'))
 

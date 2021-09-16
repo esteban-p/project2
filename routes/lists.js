@@ -23,8 +23,9 @@ router.get('/profile/:id', loginCheck(), (req, res, next) => {
   //console.log('user: ', );
   const user = req.session.user;
   List.find( { owner: user._id } )
-    .then(lists  => {
-      res.render('profile', { lists , user } );
+    .then(list  => {
+      const listToPass = list[0];
+      res.render('profile', { listToPass , user } );
     })
     .catch(err => {
       next(err);
@@ -37,6 +38,51 @@ router.get('/profile/:id', loginCheck(), (req, res, next) => {
 router.get('/search-movie', (req, res, next) => {
   res.render('search');
 })
+
+
+/* ADD MOVIE TO FAVOURITES (from search page) */
+
+//<a href="/movie/add?title={{title}}&movie_id={{movie_Id}}&movie_score={{score}}&poster={{posterUrl}}">Add movive</a>
+
+router.get('/movie/add', (req, res, next) => {
+
+  List.findOneAndUpdate(
+    {owner: req.session.user._id},
+    {$push: {'movies': { 
+                        movie_Id: req.query.movie_id,
+                        movie_title: req.query.title,
+                        posterUrl: req.query.poster,
+                        ApiRating: req.query.movie_score
+    }}},
+    { new: true }
+    )
+
+    .then(list => {
+      res.redirect('/profile/' + req.session.user._id);
+    })
+    .catch(err => {
+      next(err);
+    })
+
+})
+
+
+/* Delete the movie from favourites */
+
+router.get('/movie/delete', (req, res, next) => {
+  List.findOneAndUpdate(
+    {owner: req.session.user._id},
+    {$pull: {movies: {movie_Id: req.query.movie_id}}},
+    { new: true }
+    )
+    .then(list => {
+      res.redirect('/profile/' + req.session.user._id);
+    })
+    .catch(err => {
+      next(err);
+    });
+})
+
 
 
 
@@ -72,19 +118,19 @@ router.get('/search-movie', (req, res, next) => {
 // });
 
 
-/* Search movie in List of user */
+// /* Search movie in List of user */
 
-router.get('/lists/:id/search', (req, res, next) => {
-  const user = req.session.user;
-  List.findById(req.params.id)
-    .then(list => {
-      //console.log(req.params.id);
-      res.render('list', { list, user } );
-    })
-    .catch(err => {
-      next(err);
-    });
-})
+// router.get('/lists/:id/search', (req, res, next) => {
+//   const user = req.session.user;
+//   List.findById(req.params.id)
+//     .then(list => {
+//       //console.log(req.params.id);
+//       res.render('list', { list, user } );
+//     })
+//     .catch(err => {
+//       next(err);
+//     });
+// })
 
 
 
@@ -196,31 +242,7 @@ router.get('/lists/:id/search', (req, res, next) => {
 // ------------------------------------------------------------------------------------
 
 
-/* ADD MOVIE TO FAVOURITES (from search page) */
 
-//<a href="/movie/add?title={{title}}&movie_id={{movie_Id}}&movie_score={{score}}&poster={{posterUrl}}">Add movive</a>
-
-router.get('/movie/add', (req, res, next) => {
-
-  List.findOneAndUpdate(
-    {onwer: req.session.user._id},
-    {$push: {'movies': { 
-                        movie_Id: req.query.movie_id,
-                        movie_title: req.query.title,
-                        posterUrl: req.query.poster,
-                        ApiRating: movie_score
-    }}},
-    { new: true }
-    )
-
-    .then(list => {
-      res.redirect('/profile/' + req.session.user._id);
-    })
-    .catch(err => {
-      next(err);
-    })
-
-})
 
 
 
