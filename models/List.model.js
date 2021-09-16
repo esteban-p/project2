@@ -11,7 +11,11 @@ const userSchema = new Schema({
     movies: [
         {
             movie_Id: String,
-            rating: Number,
+            movie_title: String,
+            posterUrl: String,
+            ApiRating: Number,
+            
+            //myRating: Number,
         }
     ]
 });
@@ -20,3 +24,4 @@ const userSchema = new Schema({
 const List = model("List", userSchema);
 
 module.exports = List;
+

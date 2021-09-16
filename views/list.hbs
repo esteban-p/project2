@@ -24,12 +24,16 @@
         <br><br><br>
         <p>{{movie_Id}}</p>
         <p>My rating: {{rating}}</p>
-
         <form action="/lists/{{ ../_id }}/movie-delete/{{ movie_Id }}" method="POST">
         <button type="submit">Delete this movie from my list</button>
         </form>
     {{/each}}
 {{/with}}
+
+{{#each results}}
+    {{title}}
+{{/each}}
+
 
 
 <br><br><br><br><br>

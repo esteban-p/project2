@@ -1,15 +1,29 @@
 <h1>Profile page of: {{user.username}}</h1> 
+<br><br><br>
+<h3>My favourites movies</h3>
 
 
 
-<form action="/profile" method="POST">
+	{{#each lists.movies}}
+	<h4>{{movie_Id}}</h4>
+	<h4>{{movie_title}}</h4>
+	<h4>{{posterUrl}}</h4>
+	{{/each}}
+
+
+
+
+
+
+
+{{!-- <form action="/profile" method="POST">
 	<label for="listName">New list name: </label>
 	<input type="text" name="listName">
 
 	<button type="submit">Create a new list</button>
-</form>
+</form> --}}
 
-<br><br>
+{{!-- <br><br>
 <h3>My Lists</h3>
 {{#each lists}}
     <br><br><br>
@@ -19,9 +33,11 @@
 	<h4>{{movie_Id}}</h4>
 	{{/each}}
 
-{{/each}}
+{{/each}} --}}
 
 
 
 <br><br><br>
-<a href="/logout">Log out 🚪</a>
+<a href="/search-movie">Search movies to add to my Favourites</a>
+<br><br><br>
+<a href="/logout">Log out 🚪</a>	

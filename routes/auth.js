@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require('../models/User.model');
 const bcrypt = require('bcrypt');
+const List = require('../models/List.model');
 
 
 
@@ -30,9 +31,13 @@ User.findOne({ username: username })
     const hash = bcrypt.hashSync(password, salt);
     //console.log(hash);
     User.create({ username: username, password: hash })
+
     .then(createdUser => {
-        //console.log(createdUser);
-        res.redirect('/login');
+        const movies = [];
+        console.log(createdUser);
+        List.create({ title: 'Favourites', owner: createdUser._id, movies: movies})  //req.session.user._id
+            .then(() => res.redirect('/login'))
+
     })
     .catch(err => {
         next(err);
