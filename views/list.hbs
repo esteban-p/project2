@@ -3,8 +3,8 @@
 {{!-- <h6>List id: {{list._id}} </h6> --}}
 
 
-
-<form action="/lists/{{ list._id }}" method="POST">
+<div id="userLists">
+<form action='/lists/:id-search' method="POST">
     <label for="">Movie id-test: </label>
 	<input type="text" name="movieIdFromApi">
 
@@ -36,9 +36,35 @@
 <form action="/lists/{{ list._id }}/delete" method="POST">
     <button type="submit">Delete this List</button>
 </form>
+</div>
 
 
 
 <br><br><br>
 <a href="/profile/{{user._id}}">Back to user profile</a>
 
+<div id="search">
+    <div>
+        <form action="/lists/:id-search" method="GET">
+            <input type="text" name='movie' id='movie' placeholder="Movie Name">
+            <button type="submit" id="searchBtn">Search</button>
+        </form>
+
+    </div>
+
+
+    <div>
+    {{#each results}}
+        <div>
+        {{> movieCard this}}
+        </div>
+       
+        {{!-- <form action="" method=""> --}}
+        <input type="number" name='rate' id='rate' min="0" max="10">
+        <button type="submit" id="RateBtn">Rate</button>
+        {{!-- </form> --}}
+        <button type="submit" id="addBtn">Add Movie to watch list</button>
+    {{/each}}
+    </div>
+
+</div>

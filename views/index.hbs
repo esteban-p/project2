@@ -1,3 +1,4 @@
+
 <h1>My movies lists App</h1>
 
 
@@ -5,29 +6,16 @@
 
 <a href="/login">Log In</a>
 
-<h1>{{title}} 🚀</h1>
 <p>Welcome Ironhacker!</p>
 
-<h1> Type name of Movie</h1>
-<form action="/movie-search" method="GET">
-<input type="text" name='movie' id='movie' placeholder="Movie Name">
-<button type="submit" id="searchBtn">Search</button>
-</form>
-{{!-- <div> --}}
-<form action="/movie-search-id" method="GET">
-<input type="text" name='movieId' id='movieId' placeholder="Movie Id">
-<button type="submit" id="searchBtn">Search</button>
-</form>
+{{!-- <div class="search"> --}}
 
-{{#each results}}
-<div>
-{{> movieCard this}}
-</div>
+
+{{!-- </div> --}}
 {{!-- <form action="" method=""> --}}
 {{!-- <input type="number" name='rate' id='rate' min="0" max="10">
-<button type="submit" id="RateBtn">Rate</button> --}}
-{{!-- </form> --}}
-{{!-- <button type="submit" id="addBtn">Add Movie to watch list</button>
+<button type="submit" id="RateBtn">Rate</button>
+{{!-- </form>
+<button type="submit" id="addBtn">Add Movie to watch list</button> --}}
 
-</div> --}}
-{{/each}}
+

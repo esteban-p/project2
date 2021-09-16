@@ -55,17 +55,19 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 const index = require("./routes/index");
 app.use("/", index);
 
+const profileSearchResults = require('./routes/profileSearchResults');
+app.use("/", profileSearchResults);
+
+const homeSearchResults = require('./routes/homeSearchResults');
+app.use('/', homeSearchResults);
+
+
 const auth = require("./routes/auth");
 app.use("/", auth);
 
 const lists = require("./routes/lists");
 app.use("/", lists);
 
-const searchResults = require("./routes/searchResults");
-app.use("/", searchResults);
-
-const homeSearchResults = require('./routes/homeSearchResults');
-app.use('/', homeSearchResults);
 
 //Use to render list in Profile
 const listRender = require('./routes/listRender');

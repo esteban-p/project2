@@ -69,6 +69,19 @@ router.get('/lists/:id', (req, res, next) => {
     });
 })
 
+/* Search movie in List of user */
+
+router.get('/lists/:id/search', (req, res, next) => {
+  const user = req.session.user;
+  List.findById(req.params.id)
+    .then(list => {
+      //console.log(req.params.id);
+      res.render('list', { list, user } );
+    })
+    .catch(err => {
+      next(err);
+    });
+})
 
 
 /* Add movie to List, from list view */

@@ -1,10 +1,14 @@
+const express = require('express');
 const router = require("express").Router();
+const User = require('../models/User.model');
+const List = require('../models/List.model');
 const axios = require('axios');
 const TMDBApi_key = process.env.API_Key;
 // router.get("/movie-search", (req, res, next) => {
 //     res.render("searchResults");
 //   });
-  router.get('/profile/:id/movie-search', (req, res) => {
+  router.get('/lists/:id/search', (req, res) => {
+    const user = req.session.user;
     const movie = req.query.movie;
     const movieQuery = movie.split(' ').join('+');
     // console.log(movieQuery);
@@ -38,7 +42,9 @@ const TMDBApi_key = process.env.API_Key;
         
         
         const results = searchMovie(response.data.results)
-       res.render('searchResults', { results: results});
+       res.render('list', { results: results});
+
+       
       })
   
       .catch((err) =>

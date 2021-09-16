@@ -42,7 +42,7 @@ const TMDBApi_key = process.env.API_Key;
         
         
         const results = searchMovie(response.data.results)
-       res.render('index', { results: results});
+       res.render('search', { results: results});
       })
   
       .catch((err) =>
