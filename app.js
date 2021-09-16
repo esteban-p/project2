@@ -62,6 +62,7 @@ const homeSearchResults = require('./routes/homeSearchResults');
 app.use('/', homeSearchResults);
 
 
+
 const auth = require("./routes/auth");
 app.use("/", auth);
 
