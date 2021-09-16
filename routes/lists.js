@@ -36,7 +36,8 @@ router.get('/profile/:id', loginCheck(), (req, res, next) => {
 /* Search page */
 
 router.get('/search-movie', (req, res, next) => {
-  res.render('search');
+  const user = req.session.user;
+  res.render('search', {user});
 })
 
 

@@ -2,6 +2,9 @@ const router = require("express").Router();
 const axios = require('axios');
 const movieSearch = require('./movieSearchFunction');
 const TMDBApi_key = process.env.API_Key;
+const User = require('../models/User.model');
+
+
 // router.get("/movie-search", (req, res, next) => {
 //     res.render("searchResults");
 //   });
@@ -45,7 +48,8 @@ const TMDBApi_key = process.env.API_Key;
         //console.log ('Data link:', queryLink);
         
         const results = searchMovie(response.data.results)
-       res.render('search', { results: results});
+        const user = req.session.user;
+        res.render('search', { results: results, user});
       })
       .catch((err) =>
         console.log('The error while searching artists occurred: ', err)
