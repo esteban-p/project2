@@ -1,7 +1,17 @@
+<div id="logOutButton">
+<a href="/logout" id="logOutLink">Log out 🚪</a>	
+</div>
+<br><br><br>
 <div id="profilePage">
 <h1>Profile page of: {{user.username}}</h1> 
+<br><br>
+<h3>Search movies to add to my Favourites</h3>
+<a href="/search-movie" id="searchButton">Search</a>
+
+
+</div>
 <br><br><br>
-<h2>My favourites movies</h2>
+<h2>My favorites movies</h2>
 
 
 <div id="favList">
@@ -12,7 +22,7 @@
 	<img src="{{posterUrl}}"  width='100px' alt="Poster for {{movie_title}}">
 	<h4>{{movie_title}}</h4>
 	<h4>Score: {{ApiRating}}</h4>
-	<a href="/movie/delete?movie_id={{movie_Id}}">Remove from my favourites</a>
+	<a href="/movie/delete?movie_id={{movie_Id}}" id="remove">Remove from my favorites</a>
 
 
 
@@ -52,9 +62,3 @@
 
 
 <br><br><br>
-<h3>Search movies to add to my Favourites</h3>
-<a href="/search-movie">Search</a>
-<br><br><br>
-<a href="/logout">Log out 🚪</a>	
-
-</div>

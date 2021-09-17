@@ -1,7 +1,15 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  
+  background-image: url('../images/Movie-App-Imgs/Cinema1.jpeg');
+  background-size: cover;
+  color: rgb(230, 235, 238);
+  text-shadow: 1px 1px 20px;
+}
+
+header{
+  background-image: url("../images/Movie-App-Imgs/film-banner.png");
+  background-size: cover;
 }
 
 #addMovie {
@@ -10,7 +18,9 @@ body {
   width: 85px;
   height: 20px;
   padding: 10px;
+  border-radius: 5px;
   background: rgb(199, 163, 4);
+  text-shadow: 1px 1px 0px;
   color: #161515;
 }
 
@@ -19,7 +29,20 @@ body {
 } */
 
 #landingPage{
-  background-image: url("../images/Movie-App-Imgs/film-banner.png;");
+  background-image: url("../images/Movie-App-Imgs/Cinema1.jpeg");
+  background-size: cover;
+  
+ 
+}
+
+#logInPage{
+  background-image: url("../images/Movie-App-Imgs/Michigan_Theater_Concession_Stand.jpeg");
+  background-size: cover;
+}
+
+#imgbox{
+  width: max-content;
+  height: max-content;
 }
 
 #searchResults{
@@ -58,9 +81,112 @@ font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 font-weight: bolder;
 width: 300vw;
 }
+#welcome{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-shadow : horizontal-shadow vertical-shadow blur color;
+  color: azure;
+ 
+}
+
+#credentials{
+  height: 100%;
+  display: flex;
+  align-content:flex-start;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+ 
+ 
+}
+
+#remove{
+  display: block;
+  width: 15vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
+  background: rgb(187, 186, 182);
+color: #131413;
+
+}
+
+#searchButton{
+  display: block;
+  width: 4vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
+  background: rgb(187, 186, 182);
+color: #131413;
+
+}
+
+#logOutButton{
+  display: flex;
+  justify-content: end;
+  margin-left: 80vw;
+  
+}
+
+#logOutLink{
+  display: block;
+  width: 4vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
+  background: rgb(187, 186, 182);
+color: #131413;
+}
 
 #signUp {
-  color: #15df58;
+  display: block;
+  width: 4vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
+  background: rgb(187, 186, 182);
+color: #131413;
+}
+
+#logIn{
+  display: block;
+  width: 3vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
+  background: rgb(187, 186, 182);
+color: #131413;
+}
+
+#homeButton{
+  display: block;
+  width: 6vw;
+  height: 20px;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
+  background: rgb(187, 186, 182);
+color: #131413;
 }
 
 #profileLink{
@@ -70,7 +196,8 @@ width: 300vw;
   padding: 5px;
   margin: 10px;
   margin-right: 10px;
-
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px;
   background: rgb(187, 186, 182);
 color: #131413;
 }
@@ -79,6 +206,7 @@ color: #131413;
 display: flex;
 justify-content: end;
 margin-left: 80vw;
+
 }
 
 #searchBar{
@@ -91,6 +219,12 @@ margin-left: 80vw;
 
 }
 
+
 #profilePage{
   /* background-image: url("../images/Movie-App-Imgs/Cinema1.jpeg"); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vw;
 }
